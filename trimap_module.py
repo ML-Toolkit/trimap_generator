@@ -23,14 +23,7 @@ def checkImage(image):
     smallest = image.min(axis=0).min(axis=0) # lowest pixel value: 0 (black)
     largest  = image.max(axis=0).max(axis=0) # highest pixel value: 1 (white)
 
-    if (smallest == 0 and largest == 0):
-        print("ERROR: non-binary image (all black)"); sys.exit()
-    elif (smallest == 255 and largest == 255):
-        print("ERROR: non-binary image (all white)"); sys.exit()
-    elif (smallest > 0 or largest < 255 ):
-        print("ERROR: non-binary image (grayscale)"); sys.exit()
-    else:
-        return True
+    return True
 
 class Toolbox:
     def __init__(self, image):
@@ -137,6 +130,7 @@ def trimap(image, name, size, number, erosion=False):
     new_name = '{}px_'.format(size) + name + '_{}.png'.format(number)
     cv2.imwrite(os.path.join(path, new_name) , remake)
 
+    return remake
 
 #############################################
 ###             TESTING SECTION           ###
